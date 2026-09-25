@@ -1,0 +1,28 @@
+// Intuition:
+// We need to right rotate the array by k places, which means
+// the last k elements should move to the beginning of the array.
+//
+// Instead of shifting the elements one by one, we use the reverse
+// algorithm. First, we reverse the entire array, which brings the
+// last k elements to the beginning, but their order is reversed.
+//
+// Then, we reverse the first k elements to restore their original order.
+// Finally, we reverse the remaining n-k elements to restore their
+// original order.
+//
+// This gives us the required right-rotated array.
+//
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
+        k = k % n;
+
+        reverse(nums.begin(), nums.end());
+        reverse(nums.begin(), nums.begin() + k);
+        reverse(nums.begin() + k, nums.end());
+    }
+};
