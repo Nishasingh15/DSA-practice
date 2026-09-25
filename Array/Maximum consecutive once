@@ -1,0 +1,25 @@
+// Intuition:
+// Traverse the array and count consecutive 1s.
+// When 0 is found, reset the count.
+// Keep updating the maximum count.
+//
+// TC: O(n)
+// SC: O(1)
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int count = 0;
+        int maxi = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] == 1) {
+                count++;
+                maxi = max(maxi, count);
+            } else {
+                count = 0;
+            }
+        }
+
+        return maxi;
+    }
+};
