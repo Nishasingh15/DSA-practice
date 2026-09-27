@@ -1,0 +1,29 @@
+// Intuition:
+// Traverse the array and for each element, calculate the required
+// value as (target - current element).
+// Check if this required value is already present in the hash map.
+// If present, return its stored index and the current index.
+// Otherwise, store the current element with its index in the map.
+//
+// Time Complexity: O(n) average
+// Space Complexity: O(n)
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+    unordered_map<int, int> mp;
+
+    for (int i = 0; i < nums.size(); i++) {
+        int required = target - nums[i];
+
+        if (mp.find(required) != mp.end()) {
+            return {mp[required], i};
+        }
+
+        mp[nums[i]] = i;
+    }
+
+    return {};
+
+        
+    }
+};
